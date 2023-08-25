@@ -1,4 +1,7 @@
+#stores gmail username and app password
 secret.yaml
-```
+
+#hiding the reference example.py file
 example.py
 ```
+

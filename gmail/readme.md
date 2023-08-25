@@ -1,4 +1,4 @@
-# SUMMARY: This is a python script that deletes promotional gmails daily at 9PM EST using a cron job. It uses the 'poplib' and 'schedule' libraries to connect to the gmail server and run the cron job respectively. 
+# This is a python script that deletes promotional gmails daily at 9PM EST using a cron job. It uses the 'poplib' and 'schedule' libraries to connect to the gmail server and run the cron job respectively. 
 
 ## How to use:
 1. Create an app password for your gmail account in order to use this script.
