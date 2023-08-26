@@ -1,57 +1,48 @@
 '''
 OBJECTIVE: Access gmail account and auto delete promotional emails daily
-
 *TODO:*
-- [x] access gmail account
-- [x] access promotional emails
+- [x] a̶c̶c̶e̶s̶s̶ g̶m̶a̶i̶l̶ a̶c̶c̶o̶u̶n̶t̶
+- [x] a̶c̶c̶e̶s̶s̶ p̶r̶o̶m̶o̶t̶i̶o̶n̶a̶l̶ e̶m̶a̶i̶l̶s̶
+- [x] d̶e̶l̶e̶t̶e̶ t̶o̶p̶ p̶r̶o̶m̶o̶t̶i̶o̶n̶a̶l̶ e̶m̶a̶i̶l̶
 - [x] set up a cron job to run daily
-- [x] delete promotional emails
-
 '''
-import poplib
-from io import StringIO
-import yaml
-import email
-# import schedule
 
+import imaplib
+import yaml
+
+# account credentials
 username = yaml.safe_load(open('secret.yaml'))['username']
 password = yaml.safe_load(open('secret.yaml'))['password']
 
-# configure
-server = poplib.POP3_SSL('pop.gmail.com', 995)
-server.user(username)
-server.pass_(password)
-print("check 1")
+# email provider's IMAP server
+imap_server = 'imap.gmail.com'
 
-# list items on server
-resp, items, octets = server.list()
-print("check 2")
+# create an IMAP4 class with SSL 
+imap = imaplib.IMAP4_SSL(imap_server)
 
-# download the first message in the list
-# id, size = int(items[0].split()[0]), int(items[0].split()[1])
-# resp, text, octets = server.retr(id)
+# authenticate
+imap.login(username, password)
 
-#download the latest message
-id, size = int(items[-1].split()[0]), int(items[-1].split()[1])
-resp, text, octets = server.retr(id)
+#view all mailboxes
+# print(imap.list())
 
-#download based on date
-# for i in range(1, len(items)):
-#     id, size = int(items[i].split()[0]), int(items[i].split()[1])
-#     resp, text, octets = server.retr(id)
-#     message = email.message_from_string(text)
-#     date = message['date']
-#     if date == 'Fri, 25 Aug 2023 15:00:00 +0000':
-#         print("found!")
-#         break
+# select mailbox to access
+status, messages = imap.select("[Imap]/Promotions")
+# status, messages = imap.select("[Gmail]/Spam")
 
-# convert list to Message object
-text = b"\n".join(text)
-file = StringIO(text.decode('utf-8'))
+# total number of emails
+messages = int(messages[0])
+before = messages # beginning number of emails
+print("before: " + str(before))
 
-message = email.message_from_file(file)
+# delete all emails
+for i in range(messages, 0, -1):
+    imap.store(str(i), "+FLAGS", "\\Deleted")
+    imap.expunge()
+    print("deleted: " + str(i))
 
-#print message from a specific date
-print(message['date'])
+print("after: " + str(messages))
 
-
+# close the connection and logout
+imap.close()
+imap.logout()
