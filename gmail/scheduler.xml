@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- This is the name of the application that will be shown in the scheduler -->
+    <key>Label</key>
+    <string>gmail.scheduler</string>
+    <!-- This is the command that will be executed -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python</string>
+        <string>/Users/benedictaudeogu/Library/Mobile Documents/com~apple~CloudDocs/projects/gmail/api/api.py</string>
+    </array>
+    <!-- This is the automatic execution time 8PM -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>20</integer>
+        <key>Minute</key>
+        <integer>00</integer>
+    </dict>
+</dict>
+</plist>
+```

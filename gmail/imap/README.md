@@ -9,11 +9,18 @@
         - Any email with IMAP access can be deleted by this script.
 
 ## Status: 
-- Since there isn't one already, I created an imap of promotions but this creates a copy and does not delete the original. I need to find a way to delete the original.
-    - Used google api instead to resolve this issue
+- Since there isn't one already, I created an imap of promotions but this creates a copy and does not delete the original. Dont have fix for this yet.
+    - Ended up using gmail api
 - Will work with any listed email types otherwise 
+    - This includes any IMAP labels google has predefined
     ```
     print(imap.list())
     ```
 
+## .gitignore contents:
+1. `secret.yaml` --> gmail username and app password - IMAP
+2. `credentials.json` --> google api json credentials
+3. `token.pickle` --> google api token
 
+## Alternative email configurations:
+- https://www.systoolsgroup.com/imap/

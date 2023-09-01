@@ -1,9 +1,7 @@
 # gmail username and app password - imap
 secret.yaml
-
 # google api json credentials
 credentials.json
-
 # google api token
 token.pickle
 
