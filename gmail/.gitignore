@@ -1,7 +1,12 @@
-#hiding gmail username and app password
+# gmail username and app password - imap
 secret.yaml
 
-#hiding the extra files
-extra.py
+# google api json credentials
+credentials.json
+
+# google api token
+token.pickle
+
+
 
 
