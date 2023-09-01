@@ -1,8 +1,8 @@
-# Delete promotional emails using Gmail API and cronjob. Runs 9PM EST every day.
+# Delete promotional emails using Gmail API and cron job. Runs 8PM daily.
 
 ## How to use:
 1. Install dependencies
-    ```python
+    ```Python
     pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
     ```
 2. Access the Gmail API from IDE using OAuth 2.0 token
@@ -12,14 +12,15 @@
 3. Download JSON and rename to 'credentials.json', store in project directory
 4. Set up a cron job
      - [Setup Link](https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/)
-     - I chose to run the script at 9PM EST daily. My cronjob looks like this:
+     - I chose to run the script at 8PM daily. My cronjob looks like this:
          ```
-         0 21 * * * /usr/bin/python3 <path to script>
+         0 20 * * * /usr/bin/python3 <path to script>
          ```
      - To edit the cronjob, run `crontab -e` in the terminal.
      - To check if the cronjob is running, run `crontab -l` in the terminal.
 
 
 ### Trouble Shooting:
-- [If receiving an **Access Blocked** message](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process)
-<img src=api/error.png width=450>
+1. [Alternate Link For Full Set Up](https://developers.google.com/gmail/api/quickstart/python)
+2. [If receiving an **Access Blocked** message](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process)
+<img src=error.png>
