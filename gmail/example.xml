@@ -9,13 +9,13 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python</string>
-        <string>/Users/benedictaudeogu/Library/Mobile Documents/com~apple~CloudDocs/projects/gmail/api/api.py</string>
+        <string>--------------INSERT FILE PATH HERE--------------</string>
     </array>
-    <!-- This is the automatic execution time 8PM -->
+    <!-- This is the automatic execution time (ex: 8PM = 20) -->
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>20</integer>
+        <integer>--------------INSERT HOUR TO EXECUTE HERE--------------</integer>
         <key>Minute</key>
         <integer>00</integer>
     </dict>
