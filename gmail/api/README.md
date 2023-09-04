@@ -19,8 +19,8 @@
 4. Set up a job using crontab
      - [Setup Link](https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/)
      - I chose to run the script at 7PM daily. My command looks like this:
-         ```
-         0 19 * * * <path to exceutable>
+         ```Python
+         0 19 * * * usr/bin/python3 <path to exceutable>
          ```
      - To edit the cronjob, run `crontab -e` in the terminal.
      - To verify if the cronjob was created, run `crontab -l` in the terminal.
@@ -30,6 +30,13 @@
 1. [Alternate Link For Full Set Up](https://developers.google.com/gmail/api/quickstart/python)
 2. [If receiving an **Access Blocked** message](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process)
 <img src=error.png>
+
+3. SyntaxError: Non-UTF-8 code starting with '\xcf' in file <path to exceutable> on line 1, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details
+    ```Python
+        #Insert at the top of script - will look like comments
+        #!/usr/bin/python3
+        # -*- coding: latin-1 -*-
+    ```
 
 
 ### Alternatives:

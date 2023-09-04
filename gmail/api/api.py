@@ -1,9 +1,7 @@
+#!/usr/bin/python3
+# -*- coding: latin-1 -*-
 import os
-import time
 import pickle
-from schedule import repeat, every
-import schedule
-
 # Gmail API utils
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -63,12 +61,3 @@ def delete(service, query):
 
 delete(service, 'in:promotions')
 
-# automate
-# if __name__ == '__main__':
-#     schedule.every().day.at("09:00").do(authenticate)
-#     service = authenticate()
-#     schedule.every().day.at("09:01").do(find, service, 'in:promotions')
-#     schedule.every().day.at("09:02").do(delete, service, 'in:promotions')
-#     while True:
-#         schedule.run_pending()
-#         time.sleep(1)
