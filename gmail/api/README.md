@@ -37,6 +37,10 @@
         #!/usr/bin/python3
         # -*- coding: latin-1 -*-
     ```
+4. from googleapiclient.discovery import build ModuleNotFoundError: No module named 'googleapiclient'
+    ```Python
+    pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+    ```
 
 
 ### Alternatives:
