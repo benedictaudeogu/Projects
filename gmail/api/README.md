@@ -1,5 +1,4 @@
-# Delete promotional emails using Gmail API and Cron job. Runs 7PM daily.
-
+# Delete promotional emails using Gmail API and Cron job
 ## How to use:
 1. Install dependencies
     ```Python
