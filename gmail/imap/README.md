@@ -21,7 +21,7 @@
 1. `secret.yaml` --> gmail username and app password - IMAP
 2. `credentials.json` --> google api json credentials
 3. `token.pickle` --> google api token
-4. `cron.xml` --> scheduler with my file paths 
+4. `cron.xml` --> potential scheduler with my file paths 
 
 ## Alternative email configurations:
-- [Other Servers](https://www.systoolsgroup.com/imap/)
+- [Look Here For Other Servers](https://www.systoolsgroup.com/imap/)

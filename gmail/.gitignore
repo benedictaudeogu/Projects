@@ -4,7 +4,7 @@ secret.yaml
 credentials.json
 # google api token
 token.pickle
-# scheduler with file paths
+# potential scheduler with file paths
 cron.xml
 ```
 
