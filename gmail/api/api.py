@@ -57,6 +57,9 @@ def find(service, query):
 # delete promotional emails
 def delete(service, query):
     messages_to_delete = find(service, query)
+    if not messages_to_delete:
+        print("No messages found.")
+        return
     # to delete a single message with the delete API: service.users().messages().delete(userId='me', id=msg['id'])
     return service.users().messages().batchDelete(
       userId='me',
