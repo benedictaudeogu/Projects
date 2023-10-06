@@ -15,8 +15,8 @@ start_date = datetime.date(2023, 9, 17)
 def authenticate():
     creds = None
     # restore token.pickle file every 7 days, starting on the date this feature was added
-    if(datetime.date.today() - start_date).days % 7 == 0 and os.path.exists("token.pickle"): 
-        os.remove("token.pickle")
+    # if(datetime.date.today() - start_date).days % 7 == 0 and os.path.exists("token.pickle"): 
+    #     os.remove("token.pickle")
 
     # token.pickle stores the user's access and refresh tokens, created automatically when the authorization flow completes for the first time
     if os.path.exists("token.pickle"):
