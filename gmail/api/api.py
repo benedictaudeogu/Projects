@@ -34,39 +34,42 @@ def authenticate():
             pickle.dump(creds, token)
     return build('gmail', 'v1', credentials=creds)
 
-
 # get the Gmail API service
-service = authenticate()
+# try catch block to handle authentication errors
+try:
+    service = authenticate()
+except Exception as e:
+    print("Error: %s. Authentication failed." % e)
 
 # gather all email messages
-def find(service, query):
-    result = service.users().messages().list(userId='me',q=query).execute()
-    messages = []
-    if 'messages' in result:
-        messages.extend(result['messages'])
-    while 'nextPageToken' in result:
-        page_token = result['nextPageToken']
-        result = service.users().messages().list(userId='me',q=query, pageToken=page_token).execute()
-        if 'messages' in result:
-            messages.extend(result['messages'])
-    return messages
+# def find(service, query):
+#     result = service.users().messages().list(userId='me',q=query).execute()
+#     messages = []
+#     if 'messages' in result:
+#         messages.extend(result['messages'])
+#     while 'nextPageToken' in result:
+#         page_token = result['nextPageToken']
+#         result = service.users().messages().list(userId='me',q=query, pageToken=page_token).execute()
+#         if 'messages' in result:
+#             messages.extend(result['messages'])
+#     return messages
 
-# number of promotional emails
-# print(len(find(service, 'in:promotions')))
+# # number of promotional emails
+# # print(len(find(service, 'in:promotions')))
 
-# delete promotional emails
-def delete(service, query):
-    messages_to_delete = find(service, query)
-    if not messages_to_delete:
-        print("No messages found.")
-        return
-    # to delete a single message with the delete API: service.users().messages().delete(userId='me', id=msg['id'])
-    return service.users().messages().batchDelete(
-      userId='me',
-      body={
-          'ids': [ msg['id'] for msg in messages_to_delete]
-      }
-    ).execute()
+# # delete promotional emails
+# def delete(service, query):
+#     messages_to_delete = find(service, query)
+#     if not messages_to_delete:
+#         print("No messages found.")
+#         return
+#     # to delete a single message with the delete API: service.users().messages().delete(userId='me', id=msg['id'])
+#     return service.users().messages().batchDelete(
+#       userId='me',
+#       body={
+#           'ids': [ msg['id'] for msg in messages_to_delete]
+#       }
+#     ).execute()
 
-delete(service, 'in:promotions')
+# delete(service, 'in:promotions')
 
