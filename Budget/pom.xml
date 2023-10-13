@@ -21,6 +21,12 @@
             <!--Replace this version number with the latest verison, which can be found at https://github.com/plaid/plaid-java/tags-->
             <version>9.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
