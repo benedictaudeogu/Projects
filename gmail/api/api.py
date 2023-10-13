@@ -36,10 +36,13 @@ def authenticate():
 
 # get the Gmail API service
 # try catch block to handle authentication errors
+# send push notification to user's phone if authentication fails
 try:
     service = authenticate()
 except Exception as e:
     print("Error: %s. Authentication failed." % e)
+    # send push notification to user's phone
+    
 
 # gather all email messages
 # def find(service, query):
