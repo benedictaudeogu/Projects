@@ -40,3 +40,6 @@ build/
 ### JSON ###
 package-lock.json
 package.json
+
+### Node ###
+node_modules/
