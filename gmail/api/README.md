@@ -23,7 +23,12 @@
     - To delete all cronjobs you've created, run `crontab -r` in the terminal.
 
 
-### Trouble Shooting:
+### Error Message Handling:
+- Receive a push notification on Telegram if the script fails to run. 
+![Alt text](IMG_0108.jpeg)
+[Telegram Bot API](https://core.telegram.org/bots).
+#### Trouble Shooting:
 1. [Alternate Link For Full Set Up](https://developers.google.com/gmail/api/quickstart/python)
 2. [If receiving an **Access Blocked** message](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process)
-<img src=error.png>
+<img src=Error.png>
+
