@@ -1,6 +1,0 @@
-[submodule "projects"]
-	path = projects
-	url = https://github.com/plaid/quickstart.git
-[submodule "quickstart"]
-	path = quickstart
-	url = https://github.com/plaid/quickstart.git
