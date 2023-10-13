@@ -4,7 +4,8 @@ secret.yaml
 credentials.json
 # google api token
 token.pickle
-# 
+# ignore .DS_Store files
+.DS_Store
 
 
 
