@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -62,7 +63,8 @@ public class Main {
                 .secret(dotenv.get("PLAID_SECRET"))
                 .user(user)
                 .clientName("Plaid Test App")
-                .products(Collections.singletonList(Products.fromValue("auth")))
+                .products(Arrays.asList(Products.fromValue("auth")))
+                // .products(Arrays.asList(Products.fromValue("transactions")))
                 .countryCodes(List.of(CountryCode.US))
                 .language("en")
                 .redirectUri("https://domainname.com/oauth-page.html")
