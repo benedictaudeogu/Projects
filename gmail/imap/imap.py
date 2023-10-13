@@ -4,8 +4,8 @@ import imaplib
 import yaml
 
 # account credentials
-username = yaml.safe_load(open('secret.yaml'))['username']
-password = yaml.safe_load(open('secret.yaml'))['password']
+username = yaml.safe_load(open('gmail/secret.yaml'))['username']
+password = yaml.safe_load(open('gmail/secret.yaml'))['password']
 
 # email provider's IMAP server
 imap_server = 'imap.gmail.com'

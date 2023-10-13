@@ -1,13 +1,10 @@
-# gmail username and app password - imap
+# gmail username and app password - imap, telegram bot token and chat id - api
 secret.yaml
 # google api json credentials
 credentials.json
 # google api token
 token.pickle
-# potential scheduler with file paths
-cron.xml
-```
-
+# 
 
 
 

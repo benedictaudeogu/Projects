@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: latin-1 -*-
 import os
+import yaml
 import pickle
 import datetime
+import requests
 # Gmail API utils
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -36,43 +38,51 @@ def authenticate():
 
 # get the Gmail API service
 # try catch block to handle authentication errors
-# send push notification to user's phone if authentication fails
 try:
     service = authenticate()
 except Exception as e:
-    print("Error: %s. Authentication failed." % e)
-    # send push notification to user's phone
+    # print("Error: %s. Authentication failed." % e)
     
+    # send push notification to user's phone
+    # Bot token and chat id are stored in secret.yaml (not commited)
+    TOKEN = yaml.safe_load(open('gmail/secret.yaml'))['TOKEN'] 
+    CHAT_ID = yaml.safe_load(open('gmail/secret.yaml'))['CHAT_ID']
+    # print(TOKEN)
+    message = "Gmail Authentication Error: %s. Authentication failed." % e
+    url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={message}"
+
+    # Send the message
+    print(requests.get(url).json())
 
 # gather all email messages
-# def find(service, query):
-#     result = service.users().messages().list(userId='me',q=query).execute()
-#     messages = []
-#     if 'messages' in result:
-#         messages.extend(result['messages'])
-#     while 'nextPageToken' in result:
-#         page_token = result['nextPageToken']
-#         result = service.users().messages().list(userId='me',q=query, pageToken=page_token).execute()
-#         if 'messages' in result:
-#             messages.extend(result['messages'])
-#     return messages
+def find(service, query):
+    result = service.users().messages().list(userId='me',q=query).execute()
+    messages = []
+    if 'messages' in result:
+        messages.extend(result['messages'])
+    while 'nextPageToken' in result:
+        page_token = result['nextPageToken']
+        result = service.users().messages().list(userId='me',q=query, pageToken=page_token).execute()
+        if 'messages' in result:
+            messages.extend(result['messages'])
+    return messages
 
-# # number of promotional emails
-# # print(len(find(service, 'in:promotions')))
+# number of promotional emails
+# print(len(find(service, 'in:promotions')))
 
-# # delete promotional emails
-# def delete(service, query):
-#     messages_to_delete = find(service, query)
-#     if not messages_to_delete:
-#         print("No messages found.")
-#         return
-#     # to delete a single message with the delete API: service.users().messages().delete(userId='me', id=msg['id'])
-#     return service.users().messages().batchDelete(
-#       userId='me',
-#       body={
-#           'ids': [ msg['id'] for msg in messages_to_delete]
-#       }
-#     ).execute()
+# delete promotional emails
+def delete(service, query):
+    messages_to_delete = find(service, query)
+    if not messages_to_delete:
+        print("No messages found.")
+        return
+    # to delete a single message with the delete API: service.users().messages().delete(userId='me', id=msg['id'])
+    return service.users().messages().batchDelete(
+      userId='me',
+      body={
+          'ids': [ msg['id'] for msg in messages_to_delete]
+      }
+    ).execute()
 
-# delete(service, 'in:promotions')
+delete(service, 'in:promotions')
 
