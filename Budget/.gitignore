@@ -37,9 +37,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-### Environment ###
-.env
-
 ### JSON ###
 package-lock.json
 package.json

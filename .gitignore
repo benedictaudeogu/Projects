@@ -16,4 +16,10 @@ token.pickle
 ### .idea ###
 .idea/
 
+### Environment ###
+.env
+
+### Node ###
+node_modules/
+
 
