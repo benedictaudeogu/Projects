@@ -29,12 +29,14 @@ def authenticate():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', access)
+            flow = InstalledAppFlow.from_client_secrets_file('gmail/api/credentials.json', access)
             creds = flow.run_local_server(port=0)
         # save the credentials for the next run
         with open("token.pickle", "wb") as token:
             pickle.dump(creds, token)
     return build('gmail', 'v1', credentials=creds)
+
+# service = authenticate()
 
 # get the Gmail API service
 # try catch block to handle authentication errors
