@@ -20,6 +20,6 @@ token.pickle
 .env
 
 ### Node ###
-node_modules/
+# node_modules/
 
 
