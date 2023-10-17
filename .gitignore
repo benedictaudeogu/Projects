@@ -22,4 +22,8 @@ token.pickle
 ### Node ###
 # node_modules/
 
+### Budget-nonDocker ###
+Budget-nonDocker/
+
+
 
