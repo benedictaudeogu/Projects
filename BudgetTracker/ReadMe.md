@@ -19,6 +19,8 @@
 6. Content Security Policy (CSP) - Security Standard
     * [Guide](https://www.stackhawk.com/blog/spring-content-security-policy-guide-what-it-is-and-how-to-enable-it/#:~:text=Luckily%2C%20it's%20pretty%20simple%20to,a%20configuration%20that%20enables%20CSP.)
   
+**Extra:** View loans and create/modify payment plans
+  
 
 ## Current Status
 1. Can retrieve transactions and access tokens
