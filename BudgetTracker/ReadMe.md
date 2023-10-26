@@ -3,6 +3,7 @@
       * First developing in sandbox environment
   * Building in Java/Springboot and React
   * Looking to use Oracle Sql Developer (Setting up now)
+  * Goal is to achieve something better than YNAB, but for free
 
 ## Features To Add
 1. Income Streams tracker
