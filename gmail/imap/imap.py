@@ -4,8 +4,8 @@ import imaplib
 import yaml
 
 # account credentials
-username = yaml.safe_load(open('gmail/secret.yaml'))['username']
-password = yaml.safe_load(open('gmail/secret.yaml'))['password']
+username = yaml.safe_load(open('../secret.yaml'))['username']
+password = yaml.safe_load(open('../secret.yaml'))['password']
 
 # email provider's IMAP server
 imap_server = 'imap.gmail.com'
@@ -30,7 +30,7 @@ messages = int(messages[0])
 for i in range(messages, 0, -1):
     imap.store(str(i), "+FLAGS", "\\Deleted")
     imap.expunge()
-    print("deleted: " + str(i))
+    print("Deleted: " + str(i))
 
 # close the connection and logout
 imap.close()

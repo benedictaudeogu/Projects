@@ -12,7 +12,7 @@ from google.auth.transport.requests import Request
 
 # Request all access (permission to read/send/receive emails, manage the inbox, and more)
 access = ['https://mail.google.com/']
-start_date = datetime.date(2023, 9, 17)
+# start_date = datetime.date(2023, 9, 17)
 
 def authenticate():
     creds = None
@@ -29,26 +29,25 @@ def authenticate():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('gmail/api/credentials.json', access)
+            flow = InstalledAppFlow.from_client_secrets_file('../../credentials.json', access)
             creds = flow.run_local_server(port=0)
         # save the credentials for the next run
         with open("token.pickle", "wb") as token:
             pickle.dump(creds, token)
     return build('gmail', 'v1', credentials=creds)
 
-# service = authenticate()
+service = authenticate()
 
-# get the Gmail API service
 # try catch block to handle authentication errors
 try:
     service = authenticate()
 except Exception as e:
-    # print("Error: %s. Authentication failed." % e)
+    # print("!!!!!!!Error: %s." % e)
     
-    # send push notification to user's phone
+    # send push notification to user
     # Bot token and chat id are stored in secret.yaml (not commited)
-    TOKEN = yaml.safe_load(open('gmail/secret.yaml'))['TOKEN'] 
-    CHAT_ID = yaml.safe_load(open('gmail/secret.yaml'))['CHAT_ID']
+    TOKEN = yaml.safe_load(open('../secret.yaml'))['TOKEN'] 
+    CHAT_ID = yaml.safe_load(open('../secret.yaml'))['CHAT_ID']
     # print(TOKEN)
     message = "Gmail Authentication Error: %s. Authentication failed." % e
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={message}"
