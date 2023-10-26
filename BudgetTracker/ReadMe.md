@@ -1,4 +1,4 @@
-# Full Stack Budget Tracker - Started 10/2023
+# Full Stack Budget Tracker Web App - Started 10/2023
   * Utilizing Plaid API to fetch real banking data
       * First developing in sandbox environment
   * Building in Java/Springboot and React
