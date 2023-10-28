@@ -25,5 +25,8 @@ token.pickle
 ### Budget-nonDocker ###
 Budget-nonDocker/
 
+### Test ###
+test.py
+
 
 

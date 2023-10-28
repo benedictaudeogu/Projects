@@ -4,8 +4,8 @@ import imaplib
 import yaml
 
 # account credentials
-username = yaml.safe_load(open('../secret.yaml'))['username']
-password = yaml.safe_load(open('../secret.yaml'))['password']
+username = yaml.safe_load(open('secret.yaml'))['username']
+password = yaml.safe_load(open('secret.yaml'))['password']
 
 # email provider's IMAP server
 imap_server = 'imap.gmail.com'
@@ -27,6 +27,10 @@ status, messages = imap.select("[Gmail]/Spam")
 messages = int(messages[0])
 
 # delete all emails
+if messages == 0:
+    print("No messages found.")
+    quit()
+    
 for i in range(messages, 0, -1):
     imap.store(str(i), "+FLAGS", "\\Deleted")
     imap.expunge()
