@@ -1,6 +1,5 @@
 # Delete promotional emails using Gmail API and Cron job
-## How to use:
-1. Install dependencies
+1. Dependencies
     ```Python
     pip3 install google
     ```
@@ -13,22 +12,12 @@
         - **'New Credentials'** === **'Create Credentials'**
 3. Download JSON and rename to 'credentials.json', store in project directory
 4. Set up a job using crontab
-     - [Guide](https://www.ostechnix.com/a-beginners-guide-to-cron-jobs/)
-     - I chose to run the script at 7PM daily. My command looks like this:
          ```Python
-         0 19 * * * cd <path to script> && usr/local/bin/python3 api.py
+         00 19 * * * cd <path to script> && usr/local/bin/python3 api.py
          ```
-     - To edit the cronjob, run `crontab -e` in the terminal.
-     - To verify if the cronjob was created, run `crontab -l` in the terminal.
-    - To delete all cronjobs you've created, run `crontab -r` in the terminal.
-
 
 ### Error Message Handling:
 - Receive a push notification on Telegram if the script fails to run.
 <img src=notification.jpeg>
 
-#### Trouble Shooting:
-1. [Alternate Link For Full Set Up](https://developers.google.com/gmail/api/quickstart/python)
-2. [If receiving an "Access Blocked" message](https://stackoverflow.com/questions/75454425/access-blocked-project-has-not-completed-the-google-verification-process)
-<img src=error.png>
 
