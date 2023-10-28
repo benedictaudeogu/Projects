@@ -2,7 +2,7 @@
   * Utilizing Plaid API to fetch real banking data
       * First developing in sandbox environment
   * Building in Java/Springboot and React
-  * Looking to use Oracle Sql Developer (Setting up now)
+  * Database is MySQL
   * Goal is to achieve something better than YNAB, but for free
 
 ## Features To Add
@@ -24,5 +24,5 @@
 
 ## Current Status
 1. Can retrieve transactions and access tokens
-2. Currently setting up database to persist json
+2. Currently setting up database to persist jsons
 3. Will flesh out other features once I am able to save the data
