@@ -2,7 +2,7 @@
   * Utilizing Plaid API to fetch real banking data
       * First developing in sandbox environment
   * Building in Java/Springboot and React
-  * Looking to use Oracle Sql Developer (Setting up now)
+  * Database is Sql Developer
   * Goal is to achieve something better than YNAB, but for free
 
 ## Features To Add
