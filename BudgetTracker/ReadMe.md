@@ -1,9 +1,10 @@
 # Full Stack Budget Tracker Web App - Started 10/2023
   * Utilizing Plaid API to fetch real banking data
       * First developing in sandbox environment
-  * Building in Java/Springboot and React
+  * Backend in Java/Springboot and React
+  * Frontend in React
   * Database is MySQL
-  * Goal is to achieve something better than YNAB, but for free
+  * Goal is to achieve result similar to YNAB, but for free
 
 ## Features To Add
 1. Income Streams tracker
@@ -24,5 +25,6 @@
 
 ## Current Status
 1. Can retrieve transactions and access tokens
-2. Currently setting up database to persist jsons
-3. Will flesh out other features once I am able to save the data
+2. Currently working on React side
+3. Need to set up database to persist jsons
+4. Will flesh out other features once I am able to save the data
