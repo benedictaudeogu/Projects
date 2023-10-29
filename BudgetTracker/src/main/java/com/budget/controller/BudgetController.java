@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.plaid.client.model.Institution;
 import com.plaid.client.model.LinkTokenCreateResponse;
 import com.plaid.client.model.Transaction;
 
@@ -31,5 +32,10 @@ public class BudgetController {
     @GetMapping("/getTransactions")
     public List<Transaction> getTransactions() throws IOException{
         return budgetService.getTransactions(budgetService.getAccessToken());
+    }
+
+    @GetMapping("/getInstitutions")
+    public List<Institution> getInstitutions() throws IOException{
+        return budgetService.getInstitutions();
     }
 }

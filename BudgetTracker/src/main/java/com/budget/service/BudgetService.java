@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.plaid.client.ApiClient;
 import com.plaid.client.model.CountryCode;
+import com.plaid.client.model.Institution;
+import com.plaid.client.model.InstitutionsGetRequest;
+import com.plaid.client.model.InstitutionsGetResponse;
 import com.plaid.client.model.ItemPublicTokenExchangeRequest;
 import com.plaid.client.model.ItemPublicTokenExchangeResponse;
 import com.plaid.client.model.LinkTokenCreateRequest;
@@ -144,5 +147,14 @@ public class BudgetService {
         System.out.println("Number of transactions: " + transactions.size());
         // return new TransactionsSyncResponse().transactions(transactions.subList(0, 3));
         return transactions;
+    }
+
+    public List<Institution> getInstitutions() throws IOException{
+        InstitutionsGetRequest request = new InstitutionsGetRequest()
+            .count(5)
+            .offset(0)
+            .countryCodes(Arrays.asList(CountryCode.US));
+        Response<InstitutionsGetResponse> response = plaidClient.institutionsGet(request).execute();
+       return response.body().getInstitutions();
     }
 }
