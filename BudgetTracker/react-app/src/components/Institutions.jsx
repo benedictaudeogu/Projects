@@ -9,7 +9,11 @@ export const Institutions = () => {
         console.log('Sending GET request...');
         getInstitutionsService().then((response) => {
             console.log('Response received:', response.data);
-            setData(response.data);
+            setData(response.data)
+            // parse response products into comma separated string
+            response.data.forEach((institution) => {
+                institution.products = institution.products.join(', ');
+            });
         })
         .catch((error) => {
             console.error('Error:', error);
