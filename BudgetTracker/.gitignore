@@ -37,3 +37,9 @@ build/
 
 ### Resouces ###
 /src/main/resources/
+
+black-dashboard-react/
+
+.idea/
+
+.mvn/

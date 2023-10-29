@@ -19,6 +19,10 @@ public class BudgetController {
     @Autowired
     BudgetService budgetService;
 
+    // homepath - 'http://localhost:8080/'
+    @GetMapping("/")
+    public void home(){}
+
     @GetMapping("/getLinkToken")
     public LinkTokenCreateResponse getDevAccessToken() throws IOException{
         return budgetService.getDevAccessToken();
