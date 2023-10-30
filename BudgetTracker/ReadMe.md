@@ -23,8 +23,7 @@
 **Extra:** View loans and create/modify payment plans
   
 
-## Current Status
-1. Can retrieve transactions and access tokens
-2. Currently working on React side
-3. Need to set up database to persist jsons
-4. Will flesh out other features once I am able to save the data
+## Current Status: Functional front end connected to backend and displaying api call requests
+1. Looking through Plaid's availability to decide which features should be implemented
+2. Able to grab and display previous transactions and available insitutions
+3. Continual work on React side as api calls added to controller file
