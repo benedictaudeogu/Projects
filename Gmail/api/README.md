@@ -10,7 +10,7 @@
 3. Download JSON and rename to 'credentials.json', store in project directory
 4. Set up a job using crontab
          ```Python
-         00 19 * * * cd <path to script> && usr/local/bin/python3 api.py
+         00 12 * * * cd <path to script> && usr/local/bin/python3 api.py
          ```
 
 ### Error Message Handling:
