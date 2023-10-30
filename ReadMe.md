@@ -7,4 +7,4 @@ ReadMe included, links provided when possible.
 
 ![](https://progress-bar.dev/100/?title=Gmail_Python_Script)
 
-![](https://progress-bar.dev/25/?title=BudgetTracker)
+![](https://progress-bar.dev/30/?title=BudgetTracker)
