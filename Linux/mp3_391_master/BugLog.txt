@@ -1,0 +1,58 @@
+1. Problem: We had an issue where no exceptions were raised despite the fact that there were no errors. 
+            For example, when dividing by zero we stepped through the program and it jumped to some random address not recognized as code. 
+   Solution: We thought the issue was related to linkage when we asked a TA, but we later found out by tweaking values in the init_idt.c 
+             file that our present value should've been 1. 
+             This simple issue led to hours of debugging but we found it due to it being the only value not specified in the mp3 document.
+
+2. Problem: Encountered a bug where dereferencing a null pointer did not raise an exception. 
+            The other exceptions such as divide_by_zero worked perfectly but dereferencing didn't. 
+   Solution: We eventually learned from a TA that the paging was required to have this exception work.
+
+3. Encountering "Error: no such instruction: `extern void l_idt(idt_desc_t* idt)'"
+   Solution: Removed an included idt header within the x86_desc.S file that seemed to be 
+             trying to read the C file as an assembly one
+
+4. Problem: When trying to call paging, our kernel kept crashing. 
+   Solution: Found out that kernel address was being referenced wrong as a uint32_t, but worked 
+             when set to an int
+             
+5. Problem: When testing the enter key for keyboard, a strange character was printed (looked like 
+            an inverted zero block)
+   Solution: Our implementation of Putc for newline was also taking into account other if statements
+             that printed an extra character that wasn't needed for newline
+         
+6. Problem: Our terminal_read function was causing problems for a while because we were not clearing
+            the end of the buf variable. This would cause extra characters to be in buf at the end of 
+            the terminal_read which would cause weird outputs when writing that value.
+   Solution: We used memcpy to fill the buf with null character so that it would be empty when we copy 
+            bytes into it.
+
+7. Problem: When trying to call excute function, we encounter bootlooping with the iret
+   Solution: Did not set u_s(user supervisor) bit within paging to allow for user program privilege/protection
+
+8. Problem: Encoutering "cannot read memory at 0x8048000" when trying to read to program image using
+            read_data
+   Solution: issue with len?
+
+9. Problem: When trying to iret in execute, we get a "No function contains program counter for selected frame"
+   Solution: We forgot to uncomment the idt entry for sys call
+
+10.Problem: Encountered issue where iret had page fault in hault. 
+   Solution: issue was we were using child's saved esp and ebp values instead of parent's.
+
+11.Problem: Came across an issue where getargs would pagefault and not work.
+   Solution: We never set a terminating character for the args buffer.
+
+12.Problem: Our page table for video mapping was causing a page fault when running fish.
+   Solution: Our virtual addressed didn't match in vidmap and in the page, and also our 
+             privelege bit wasn't set correctly for the page table since we had only set it in page directory.
+
+13. Problem: When trying to exit out of base shell we were receiving a page fault rather than our error message
+    Solution: We weren't decrementing our next available pid which resulted in trying to exit a non-existing program
+
+14. Problem: After changing keyboard function to account for multiple terminals, the shell only takes in one input,
+             but when running gdb, we are able to enter multiple entries with a breakpoint
+   Solution: Included end of interrupt with the wrong if statement that caused a stop in input after the first interrupt
+
+15. Problem: Infinite page fault with any of the commands in multiple terminals
+    Solution: Not setting the next available pid value correctly
