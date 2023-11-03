@@ -17,7 +17,7 @@ nodes that [nodeID] follows. the [nodeID].edges files are organized in the follo
 
 1 6
 
-where [nodeID] follows 1 and 14, while 1 follows 2 and 6 and 14 follows 10 giving the following tree
+where [nodeID] follows 1 and 14 as they are the leftmost nodes, while 1 follows 2 and 6 and 14 follows 10 giving the following tree
 
 nodeID -> 1 -> 2
 
