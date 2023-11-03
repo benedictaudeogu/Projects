@@ -54,7 +54,7 @@ finalPageRank.txt: contains the outputed print of the organized page ranked twit
 
 HOW TO MAKE THE CODEBASE:
 
-1) Pull the github repository to local EWS computer
+1) Pull the github repository
 
 2) Open command prompt and change directory to the correct pulled code base
 
@@ -64,7 +64,7 @@ HOW TO MAKE THE CODEBASE:
 
 5) user input the correct file that you want to organize. 
 
-*Note only integer values are excepted, anyother values will throw errors. Make sure that the correct file name is also used (i.e. 12831 for 12831.edges) otherwise
+*Note only integer values are excepted, any other values will throw errors. Make sure that the correct file name is also used (i.e. 12831 for 12831.edges) otherwise
 errors will be thrown or only one node will be made.
 
 6) The results will be in finalPageRank.txt with the correct ordering of the node values
