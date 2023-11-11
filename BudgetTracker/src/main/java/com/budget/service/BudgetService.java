@@ -7,9 +7,15 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import com.plaid.client.ApiClient;
+import com.plaid.client.model.AccountBalance;
+import com.plaid.client.model.AccountBase;
+import com.plaid.client.model.AccountsBalanceGetRequest;
+import com.plaid.client.model.AccountsGetRequest;
+import com.plaid.client.model.AccountsGetResponse;
 import com.plaid.client.model.CountryCode;
 import com.plaid.client.model.Institution;
 import com.plaid.client.model.InstitutionsGetRequest;
@@ -33,7 +39,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import retrofit2.Response;
 
 @Service
-public class BudgetService {
+public class BudgetService /*implements CommandLineRunner*/{
     public static String accessToken;
     public String itemId;
 
@@ -149,6 +155,7 @@ public class BudgetService {
         return transactions;
     }
 
+    /* TODO: Fix to return correctly */
     public List<Institution> getInstitutions() throws IOException{
         InstitutionsGetRequest request = new InstitutionsGetRequest()
             .count(5)
@@ -157,4 +164,28 @@ public class BudgetService {
         Response<InstitutionsGetResponse> response = plaidClient.institutionsGet(request).execute();
        return response.body().getInstitutions();
     }
+
+    public List<AccountBase> getAccounts() throws IOException{
+        // accessToken = getSandboxAccessToken();
+        AccountsGetRequest request = new AccountsGetRequest().accessToken(getSandboxAccessToken());
+        Response<AccountsGetResponse> response = plaidClient.accountsGet(request).execute();
+        List<AccountBase> accounts = response.body().getAccounts();
+        return accounts;
+    }
+
+    public HashMap<String, AccountBalance> getBalancesRefreshed() throws IOException{
+        // Pull real-time balance information for each account associated with the Item
+        AccountsBalanceGetRequest request = new AccountsBalanceGetRequest().accessToken(getSandboxAccessToken());
+        Response<AccountsGetResponse> response = plaidClient.accountsBalanceGet(request).execute();
+        List<AccountBase> accounts = response.body().getAccounts();
+        HashMap<String, AccountBalance> balances = new HashMap<String, AccountBalance>();
+        for (AccountBase account : accounts) {
+            balances.put(account.getAccountId(), account.getBalances());
+            System.out.println(balances.get(account.getAccountId()));
+        }
+        return balances;
+    }
+
+    /* TODO: Review checklist and add missing features */
+    /* TODO: Setup Link initialization for developer access */
 }
