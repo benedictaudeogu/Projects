@@ -24,9 +24,9 @@ import io.github.cdimascio.dotenv.Dotenv;
 @SpringBootTest
 class BudgetTrackerApplicationTests {
 
-	// @Test
-	// void contextLoads() {
-	// }
+	@Test
+	void contextLoads() {
+	}
 
 	@Test
 	public void testCreatePlaidClient() {
@@ -52,7 +52,6 @@ class BudgetTrackerApplicationTests {
 	// Assert
 	// assertEquals(plaidApi, result);
 	assertEquals(plaidEnv, result);
-
 	// verify(apiClient).setPlaidAdapter(plaidEnv);
 	// verify(apiClient).setApiKeys(apiKeys);
 }
