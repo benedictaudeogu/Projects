@@ -42,3 +42,14 @@ build/
 
 .mvn/
 
+.metadata/
+react-app-2/
+.env
+exception/
+mvnw
+mvnw.cmd
+pom.xml
+Dockerfile
+
+
+
