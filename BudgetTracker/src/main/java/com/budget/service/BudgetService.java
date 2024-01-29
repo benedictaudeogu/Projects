@@ -86,7 +86,8 @@ public class BudgetService /*implements CommandLineRunner*/{
     }
 
     // Create access_token for sandbox testing - bypasses link flow
-    public String getSandboxAccessToken() throws IOException {
+    @SuppressWarnings("null")
+	public String getSandboxAccessToken() throws IOException {
         SandboxPublicTokenCreateRequest sandboxPublicRequest = new SandboxPublicTokenCreateRequest()
             .institutionId("ins_109508")
             .initialProducts(Arrays.asList(Products.TRANSACTIONS, Products.AUTH));
@@ -107,7 +108,8 @@ public class BudgetService /*implements CommandLineRunner*/{
     }
 
 
-    public List<Transaction> getTransactions(String accesToken) throws IOException{     
+    @SuppressWarnings("null")
+	public List<Transaction> getTransactions(String accesToken) throws IOException{     
         // Provide a cursor from your database if you've previously recieved one for the item leave null if this is your first sync call for this item. 
         // The first request will return a cursor.
         String cursor = null;
@@ -156,7 +158,8 @@ public class BudgetService /*implements CommandLineRunner*/{
     }
 
     /* TODO: Fix to return correctly */
-    public List<Institution> getInstitutions() throws IOException{
+    @SuppressWarnings("null")
+	public List<Institution> getInstitutions() throws IOException{
         InstitutionsGetRequest request = new InstitutionsGetRequest()
             .count(5)
             .offset(0)
@@ -165,7 +168,8 @@ public class BudgetService /*implements CommandLineRunner*/{
        return response.body().getInstitutions();
     }
 
-    public List<AccountBase> getAccounts() throws IOException{
+    @SuppressWarnings("null")
+	public List<AccountBase> getAccounts() throws IOException{
         // accessToken = getSandboxAccessToken();
         AccountsGetRequest request = new AccountsGetRequest().accessToken(getSandboxAccessToken());
         Response<AccountsGetResponse> response = plaidClient.accountsGet(request).execute();
@@ -173,7 +177,8 @@ public class BudgetService /*implements CommandLineRunner*/{
         return accounts;
     }
 
-    public HashMap<String, AccountBalance> getBalancesRefreshed() throws IOException{
+    @SuppressWarnings("null")
+	public HashMap<String, AccountBalance> getBalancesRefreshed() throws IOException{
         // Pull real-time balance information for each account associated with the Item
         AccountsBalanceGetRequest request = new AccountsBalanceGetRequest().accessToken(getSandboxAccessToken());
         Response<AccountsGetResponse> response = plaidClient.accountsBalanceGet(request).execute();
