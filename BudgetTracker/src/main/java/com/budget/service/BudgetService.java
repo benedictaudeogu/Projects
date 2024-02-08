@@ -42,19 +42,15 @@ import retrofit2.Response;
 public class BudgetService /*implements CommandLineRunner*/{
     public static String accessToken;
     public String itemId;
+    
+    public String getAccessToken(){ return accessToken; }
 
-    public void setAccessToken(String accessToken){
-        BudgetService.accessToken = accessToken;
-    }
-
-    public String getAccessToken(){
-        return accessToken;
-    }
+    public void setAccessToken(String accessToken){ BudgetService.accessToken = accessToken; }
 
     public PlaidApi createPlaidClient(){
         Dotenv dotenv = Dotenv.load();
 
-        HashMap<String, String> apiKeys = new HashMap<String, String>();
+        HashMap<String, String> apiKeys = new HashMap<>();
         apiKeys.put("clientId", dotenv.get("PLAID_CLIENT_ID"));
         apiKeys.put("secret", dotenv.get("PLAID_SECRET")); 
         ApiClient apiClient = new ApiClient(apiKeys);
