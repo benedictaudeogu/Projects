@@ -24,9 +24,16 @@ class practiceForUnitTestsTest {
 		assertEquals(10, practice.add(3, 7));
 	}
 	
+	@Test
+	public void negativeIsError() {
+		assertThrows(IllegalArgumentException.class, 
+				() -> {
+					practice.determineLetterGrade(-1);
+				});
+	}
 	
 	@Test
-	public void FiftyNineIsF() {
+	public void fiftyNineIsF() {
 		assertEquals('F', practice.determineLetterGrade(59));
 	}
 	

@@ -33,5 +33,6 @@ black-dashboard-react/
 react-app/
 /.metadata/
 
-
-
+sqljdbc_12.6/
+DB_Coding_Challenge/
+SQLServerConnection/
