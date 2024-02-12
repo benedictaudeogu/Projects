@@ -16,8 +16,6 @@ class MessengerTests {
 	void testUserCreation() {
 		String expectedName = "Benedicta";
 		User user = new User(expectedName);
-		System.out.println(user.getName());
 		assertEquals(user.getName(), expectedName);
 	}
-
 }
